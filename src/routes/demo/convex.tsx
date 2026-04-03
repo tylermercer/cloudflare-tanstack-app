@@ -45,26 +45,30 @@ function ConvexTodos() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center p-4"
       style={{
         background:
           'linear-gradient(135deg, #667a56 0%, #8fbc8f 25%, #90ee90 50%, #98fb98 75%, #f0fff0 100%)',
+        minHeight: '100vh',
+        padding: '1rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
-      <div className="w-full max-w-2xl">
+      <div style={{ width: '100%', maxWidth: '42rem' }}>
         {/* Header Card */}
-        <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl border border-green-200/50 p-8 mb-6">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-green-800 mb-2">
+        <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', padding: '2rem', marginBottom: '1.5rem', borderRadius: '1rem', border: '1px solid rgba(187, 247, 208, 0.5)' }}>
+          <div style={{ textAlign: 'center' }}>
+            <h1 style={{ fontSize: '2.25rem', fontWeight: 'bold', color: '#166534', marginBottom: '0.5rem' }}>
               Convex Todos
             </h1>
-            <p className="text-green-600 text-lg">Powered by real-time sync</p>
+            <p style={{ color: '#16a34a', fontSize: '1.125rem' }}>Powered by real-time sync</p>
             {totalCount > 0 && (
-              <div className="mt-4 flex justify-center space-x-6 text-sm">
-                <span className="text-green-700 font-medium">
+              <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'center', gap: '1.5rem', fontSize: '0.875rem' }}>
+                <span style={{ color: '#15803d', fontWeight: 500 }}>
                   {completedCount} completed
                 </span>
-                <span className="text-gray-600">
+                <span style={{ color: '#4b5563' }}>
                   {totalCount - completedCount} remaining
                 </span>
               </div>
@@ -73,8 +77,8 @@ function ConvexTodos() {
         </div>
 
         {/* Add Todo Card */}
-        <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl border border-green-200/50 p-6 mb-6">
-          <div className="flex gap-3">
+        <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', padding: '1.5rem', marginBottom: '1.5rem', borderRadius: '1rem', border: '1px solid rgba(187, 247, 208, 0.5)' }}>
+          <div style={{ display: 'flex', gap: '0.75rem' }}>
             <input
               type="text"
               value={newTodo}
@@ -85,12 +89,12 @@ function ConvexTodos() {
                 }
               }}
               placeholder="What needs to be done?"
-              className="flex-1 px-4 py-3 rounded-xl border-2 border-green-200 focus:border-green-400 focus:outline-none text-gray-800 placeholder-gray-500 bg-white/80 transition-colors"
+              style={{ flex: 1, padding: '0.75rem 1rem', borderRadius: '0.75rem', border: '2px solid #bbf7d0', backgroundColor: 'rgba(255, 255, 255, 0.8)' }}
             />
             <button
               onClick={handleAddTodo}
               disabled={!newTodo.trim()}
-              className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl"
+              style={{ backgroundColor: '#22c55e', color: 'white', fontWeight: 'semibold', padding: '0.75rem 1.5rem', borderRadius: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem', border: 'none', cursor: newTodo.trim() ? 'pointer' : 'not-allowed' }}
             >
               <Plus size={20} />
               Add
@@ -99,58 +103,68 @@ function ConvexTodos() {
         </div>
 
         {/* Todos List */}
-        <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl border border-green-200/50 overflow-hidden">
+        <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderRadius: '1rem', border: '1px solid rgba(187, 247, 208, 0.5)', overflow: 'hidden' }}>
           {!todos ? (
-            <div className="p-8 text-center">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500 mx-auto mb-4"></div>
-              <p className="text-green-600">Loading todos...</p>
+            <div style={{ padding: '2rem', textAlign: 'center' }}>
+              <p style={{ color: '#16a34a' }}>Loading todos...</p>
             </div>
           ) : todos.length === 0 ? (
-            <div className="p-12 text-center">
-              <Circle size={48} className="text-green-300 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-green-800 mb-2">
+            <div style={{ padding: '3rem', textAlign: 'center' }}>
+              <Circle size={48} style={{ color: '#86efac', margin: '0 auto 1rem' }} />
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 'semibold', color: '#166534', marginBottom: '0.5rem' }}>
                 No todos yet
               </h3>
-              <p className="text-green-600">
+              <p style={{ color: '#16a34a' }}>
                 Add your first todo above to get started!
               </p>
             </div>
           ) : (
-            <div className="divide-y divide-green-100">
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
               {todos.map((todo, index) => (
                 <div
                   key={todo._id}
-                  className={`p-4 flex items-center gap-4 hover:bg-green-50/50 transition-colors ${
-                    todo.completed ? 'opacity-75' : ''
-                  }`}
                   style={{
-                    animationDelay: `${index * 50}ms`,
+                    padding: '1rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '1rem',
+                    borderBottom: index < todos.length - 1 ? '1px solid #f0fdf4' : 'none',
+                    opacity: todo.completed ? 0.75 : 1,
                   }}
                 >
                   <button
                     onClick={() => handleToggleTodo(todo._id)}
-                    className={`flex-shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-200 ${
-                      todo.completed
-                        ? 'bg-green-500 border-green-500 text-white'
-                        : 'border-green-300 hover:border-green-400 text-transparent hover:text-green-400'
-                    }`}
+                    style={{
+                      flexShrink: 0,
+                      width: '1.5rem',
+                      height: '1.5rem',
+                      borderRadius: '9999px',
+                      border: '2px solid #86efac',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: todo.completed ? '#22c55e' : 'transparent',
+                      color: todo.completed ? 'white' : 'transparent',
+                      cursor: 'pointer',
+                    }}
                   >
                     <Check size={14} />
                   </button>
 
                   <span
-                    className={`flex-1 text-lg transition-all duration-200 ${
-                      todo.completed
-                        ? 'line-through text-gray-500'
-                        : 'text-gray-800'
-                    }`}
+                    style={{
+                      flex: 1,
+                      fontSize: '1.125rem',
+                      textDecoration: todo.completed ? 'line-through' : 'none',
+                      color: todo.completed ? '#6b7280' : '#1f2937',
+                    }}
                   >
                     {todo.text}
                   </span>
 
                   <button
                     onClick={() => handleRemoveTodo(todo._id)}
-                    className="flex-shrink-0 p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                    style={{ flexShrink: 0, padding: '0.5rem', color: '#f87171', background: 'none', border: 'none', cursor: 'pointer' }}
                   >
                     <Trash2 size={18} />
                   </button>
@@ -161,8 +175,8 @@ function ConvexTodos() {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-6">
-          <p className="text-green-700/80 text-sm">
+        <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+          <p style={{ color: 'rgba(21, 128, 61, 0.8)', fontSize: '0.875rem' }}>
             Built with Convex • Real-time updates • Always in sync
           </p>
         </div>
