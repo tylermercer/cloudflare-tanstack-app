@@ -2,7 +2,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="site-footer">
+    <footer className="footer">
       <div className="page-wrap">
         <p>
           &copy; {year} Your name here. All rights reserved.
@@ -15,7 +15,7 @@ export default function Footer() {
           target="_blank"
           rel="noreferrer"
         >
-          <span className="sr-only">Follow TanStack on X</span>
+          <span className="u-sr-only">Follow TanStack on X</span>
           <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32">
             <path
               fill="currentColor"
@@ -28,7 +28,7 @@ export default function Footer() {
           target="_blank"
           rel="noreferrer"
         >
-          <span className="sr-only">Go to TanStack GitHub</span>
+          <span className="u-sr-only">Go to TanStack GitHub</span>
           <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32">
             <path
               fill="currentColor"

@@ -1,0 +1,88 @@
+@layer layouts {
+  // ─── Existing Layouts ──────────────────────────────────────────────────
+  .page-wrap {
+    width: min(1080px, calc(100% - 2rem));
+    margin-inline: auto;
+  }
+
+  // ─── New Architecture Layouts ──────────────────────────────────────────
+
+  // ─── Stack ─────────────────────────────────────────────────────────────
+  // Vertical flow with controlled gap
+  .l-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--stack-gap, var(--space-m));
+  }
+
+  // ─── Cluster ───────────────────────────────────────────────────────────
+  // Horizontal group that wraps; gap on all sides
+  .l-cluster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--cluster-gap, var(--space-s));
+    align-items: var(--cluster-align, center);
+  }
+
+  // ─── Switcher ──────────────────────────────────────────────────────────
+  // Side-by-side until threshold, then stack
+  .l-switcher {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+
+    > * {
+      flex-grow: 1;
+      flex-basis: calc((var(--switcher-threshold, 40rem) - 100%) * 999);
+    }
+  }
+
+  // ─── Container ─────────────────────────────────────────────────────────
+  // Centred with fluid inline padding
+  .l-container {
+    width: min(var(--container-max, 72rem), 100%);
+    margin-inline: auto;
+    padding-inline: var(--space-s-m);
+  }
+
+  .l-container--narrow {
+    --container-max: 48rem;
+  }
+
+  .l-container--wide {
+    --container-max: 90rem;
+  }
+
+  // ─── Sidebar ───────────────────────────────────────────────────────────
+  // Holy-grail sidebar layout
+  .l-with-sidebar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+
+    > .sidebar {
+      flex-basis: var(--sidebar-width, 16rem);
+      flex-grow: 1;
+    }
+
+    > .main-content {
+      flex-basis: 0;
+      flex-grow: 999;
+      min-width: min(var(--sidebar-threshold, 60%), 100%);
+    }
+  }
+
+  // ─── Cover ─────────────────────────────────────────────────────────────
+  // Full-height section centred on a primary element
+  .l-cover {
+    display: flex;
+    flex-direction: column;
+    min-height: var(--cover-min, 100dvh);
+    padding: var(--space-m);
+
+    > * { margin-block: auto; }
+    > :first-child:not(.cover-center) { margin-block-start: 0; }
+    > :last-child:not(.cover-center)  { margin-block-end: 0; }
+    > .cover-center { margin-block: auto; }
+  }
+}

@@ -1,0 +1,46 @@
+.header {
+  // Styles moved from base/utilities if any were header-specific
+  // Currently, the header in Header.tsx doesn't have a class.
+}
+
+.nav {
+  // page-wrap is global, but let's see if we want to scope it.
+  // Actually, the user wants us to use the plugin.
+}
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--sea-ink-soft);
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: linear-gradient(90deg, var(--lagoon), #7ed3bf);
+    transition: transform 170ms ease;
+  }
+
+  &:hover,
+  &.is-active {
+    color: var(--sea-ink);
+  }
+
+  &:hover::after,
+  &.is-active::after {
+    transform: scaleX(1);
+  }
+
+  @media (max-width: 640px) {
+    &::after {
+      bottom: -4px;
+    }
+  }
+}

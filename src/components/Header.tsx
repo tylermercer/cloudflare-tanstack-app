@@ -1,10 +1,11 @@
 import { Link } from '@tanstack/react-router'
 import ClerkHeader from '../integrations/clerk/header-user.tsx'
 import ThemeToggle from './ThemeToggle'
+import './Header.module.scss'
 
 export default function Header() {
   return (
-    <header>
+    <header className="header">
       <nav className="page-wrap">
         <h2>
           <Link
@@ -20,7 +21,7 @@ export default function Header() {
             target="_blank"
             rel="noreferrer"
           >
-            <span className="sr-only">Follow TanStack on X</span>
+            <span className="u-sr-only">Follow TanStack on X</span>
             <svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24">
               <path
                 fill="currentColor"
@@ -33,7 +34,7 @@ export default function Header() {
             target="_blank"
             rel="noreferrer"
           >
-            <span className="sr-only">Go to TanStack GitHub</span>
+            <span className="u-sr-only">Go to TanStack GitHub</span>
             <svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24">
               <path
                 fill="currentColor"

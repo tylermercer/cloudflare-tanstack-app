@@ -1,0 +1,9 @@
+// 1. Import in the same order
+@use './theme.scss';
+@use './base.scss';
+@use './layouts.scss';
+@use './utilities.scss';
+
+// 2. Declare layer order — earlier = lower specificity
+//    CSS Modules (anonymous layer) will always beat these named layers.
+@layer theme, base, layouts, utilities;

@@ -6,15 +6,34 @@ import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 
 import viteReact from '@vitejs/plugin-react'
 import { cloudflare } from '@cloudflare/vite-plugin'
+import cssAutoImport from 'vite-plugin-css-auto-import'
+
+const isDev = process.env.NODE_ENV !== 'production'
 
 const config = defineConfig({
   plugins: [
+    cssAutoImport({
+      styleExtensions: ['.module.scss'],
+      matchComponentName: true,
+    }),
     devtools(),
     cloudflare({ viteEnvironment: { name: 'ssr' } }),
     tsconfigPaths({ projects: ['./tsconfig.json'] }),
     tanstackStart(),
     viteReact(),
   ],
+  css: {
+    modules: {
+      localsConvention: 'camelCaseOnly',
+      generateScopedName: isDev ? '[name]__[local]' : '[hash:base64:6]',
+    },
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler',
+        silentImports: true,
+      },
+    },
+  },
 })
 
 export default config
