@@ -1,0 +1,152 @@
+.convex-page {
+  min-height: 100vh;
+  padding: var(--space-m);
+  background: linear-gradient(135deg, #667a56 0%, #8fbc8f 25%, #90ee90 50%, #98fb98 75%, #f0fff0 100%);
+}
+
+.convex-container {
+  width: 100%;
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.convex-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: var(--space-l);
+  border-radius: var(--radius-l);
+  border: 1px solid rgba(187, 247, 208, 0.5);
+}
+
+.convex-title {
+  font-size: var(--step-3);
+  font-weight: 700;
+  color: #166534;
+}
+
+.convex-subtitle {
+  color: #16a34a;
+  font-size: var(--step-0);
+}
+
+.convex-stats {
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.convex-input-group {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.convex-input {
+  flex: 1;
+  padding: var(--space-xs) var(--space-s);
+  border-radius: var(--radius-m);
+  border: 2px solid #bbf7d0;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-family: inherit;
+
+  &:focus {
+    outline: none;
+    border-color: #22c55e;
+  }
+}
+
+.convex-add-button {
+  background-color: #22c55e;
+  color: white;
+  font-weight: 600;
+  padding: var(--space-xs) var(--space-m);
+  border-radius: var(--radius-m);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 180ms ease;
+
+  &:hover:not(:disabled) {
+    background-color: #16a34a;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.todo-list {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-l);
+  border: 1px solid rgba(187, 247, 208, 0.5);
+  overflow: hidden;
+}
+
+.todo-item {
+  padding: var(--space-s) var(--space-m);
+  display: flex;
+  align-items: center;
+  gap: var(--space-m);
+  border-bottom: 1px solid #f0fdf4;
+  transition: opacity 180ms ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &.is-completed {
+    opacity: 0.75;
+  }
+}
+
+.todo-checkbox {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  border: 2px solid #86efac;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: transparent;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease;
+
+  &.is-checked {
+    background-color: #22c55e;
+    color: white;
+  }
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 1.125rem;
+  color: #1f2937;
+
+  &.is-completed {
+    text-decoration: line-through;
+    color: #6b7280;
+  }
+}
+
+.todo-delete {
+  flex-shrink: 0;
+  padding: 0.5rem;
+  color: #f87171;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 180ms ease;
+
+  &:hover {
+    color: #ef4444;
+  }
+}
+
+.convex-footer {
+  text-align: center;
+  color: rgba(21, 128, 61, 0.8);
+  font-size: 0.875rem;
+}

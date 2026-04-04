@@ -5,6 +5,7 @@ import { Trash2, Plus, Check, Circle } from 'lucide-react'
 
 import { api } from '../../../convex/_generated/api'
 import type { Id } from '../../../convex/_generated/dataModel'
+import './convex.module.scss'
 
 export const Route = createFileRoute('/demo/convex')({
   ssr: false,
@@ -44,28 +45,18 @@ function ConvexTodos() {
   const totalCount = todos?.length || 0
 
   return (
-    <div
-      style={{
-        background:
-          'linear-gradient(135deg, #667a56 0%, #8fbc8f 25%, #90ee90 50%, #98fb98 75%, #f0fff0 100%)',
-        minHeight: '100vh',
-        padding: '1rem',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <div style={{ width: '100%', maxWidth: '42rem' }}>
+    <div className="convex-page l-center">
+      <div className="convex-container l-stack" style={{ '--space': 'var(--space-l)' } as any}>
         {/* Header Card */}
-        <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', padding: '2rem', marginBottom: '1.5rem', borderRadius: '1rem', border: '1px solid rgba(187, 247, 208, 0.5)' }}>
-          <div style={{ textAlign: 'center' }}>
-            <h1 style={{ fontSize: '2.25rem', fontWeight: 'bold', color: '#166534', marginBottom: '0.5rem' }}>
+        <div className="convex-card l-stack" style={{ '--space': 'var(--space-m)' } as any}>
+          <div className="l-stack l-center" style={{ '--space': 'var(--space-2xs)' } as any}>
+            <h1 className="convex-title">
               Convex Todos
             </h1>
-            <p style={{ color: '#16a34a', fontSize: '1.125rem' }}>Powered by real-time sync</p>
+            <p className="convex-subtitle">Powered by real-time sync</p>
             {totalCount > 0 && (
-              <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'center', gap: '1.5rem', fontSize: '0.875rem' }}>
-                <span style={{ color: '#15803d', fontWeight: 500 }}>
+              <div className="convex-stats l-cluster" style={{ '--space': 'var(--space-m)' } as any}>
+                <span style={{ color: '#15803d' }}>
                   {completedCount} completed
                 </span>
                 <span style={{ color: '#4b5563' }}>
@@ -77,8 +68,8 @@ function ConvexTodos() {
         </div>
 
         {/* Add Todo Card */}
-        <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', padding: '1.5rem', marginBottom: '1.5rem', borderRadius: '1rem', border: '1px solid rgba(187, 247, 208, 0.5)' }}>
-          <div style={{ display: 'flex', gap: '0.75rem' }}>
+        <div className="convex-card">
+          <div className="convex-input-group">
             <input
               type="text"
               value={newTodo}
@@ -89,12 +80,12 @@ function ConvexTodos() {
                 }
               }}
               placeholder="What needs to be done?"
-              style={{ flex: 1, padding: '0.75rem 1rem', borderRadius: '0.75rem', border: '2px solid #bbf7d0', backgroundColor: 'rgba(255, 255, 255, 0.8)' }}
+              className="convex-input"
             />
             <button
+              className="convex-add-button"
               onClick={handleAddTodo}
               disabled={!newTodo.trim()}
-              style={{ backgroundColor: '#22c55e', color: 'white', fontWeight: 'semibold', padding: '0.75rem 1.5rem', borderRadius: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem', border: 'none', cursor: newTodo.trim() ? 'pointer' : 'not-allowed' }}
             >
               <Plus size={20} />
               Add
@@ -103,68 +94,44 @@ function ConvexTodos() {
         </div>
 
         {/* Todos List */}
-        <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderRadius: '1rem', border: '1px solid rgba(187, 247, 208, 0.5)', overflow: 'hidden' }}>
+        <div className="todo-list">
           {!todos ? (
-            <div style={{ padding: '2rem', textAlign: 'center' }}>
+            <div className="l-center" style={{ padding: '2rem' }}>
               <p style={{ color: '#16a34a' }}>Loading todos...</p>
             </div>
           ) : todos.length === 0 ? (
-            <div style={{ padding: '3rem', textAlign: 'center' }}>
-              <Circle size={48} style={{ color: '#86efac', margin: '0 auto 1rem' }} />
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 'semibold', color: '#166534', marginBottom: '0.5rem' }}>
-                No todos yet
-              </h3>
-              <p style={{ color: '#16a34a' }}>
-                Add your first todo above to get started!
-              </p>
+            <div className="l-stack l-center" style={{ padding: '3rem', '--space': 'var(--space-s)' } as any}>
+              <Circle size={48} style={{ color: '#86efac' }} />
+              <div className="l-stack l-center" style={{ '--space': 'var(--space-3xs)' } as any}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 'semibold', color: '#166534' }}>
+                  No todos yet
+                </h3>
+                <p style={{ color: '#16a34a' }}>
+                  Add your first todo above to get started!
+                </p>
+              </div>
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              {todos.map((todo, index) => (
+            <div className="l-stack" style={{ '--space': '0' } as any}>
+              {todos.map((todo) => (
                 <div
                   key={todo._id}
-                  style={{
-                    padding: '1rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '1rem',
-                    borderBottom: index < todos.length - 1 ? '1px solid #f0fdf4' : 'none',
-                    opacity: todo.completed ? 0.75 : 1,
-                  }}
+                  className={`todo-item ${todo.completed ? 'is-completed' : ''}`}
                 >
                   <button
                     onClick={() => handleToggleTodo(todo._id)}
-                    style={{
-                      flexShrink: 0,
-                      width: '1.5rem',
-                      height: '1.5rem',
-                      borderRadius: '9999px',
-                      border: '2px solid #86efac',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      backgroundColor: todo.completed ? '#22c55e' : 'transparent',
-                      color: todo.completed ? 'white' : 'transparent',
-                      cursor: 'pointer',
-                    }}
+                    className={`todo-checkbox ${todo.completed ? 'is-checked' : ''}`}
                   >
                     <Check size={14} />
                   </button>
 
-                  <span
-                    style={{
-                      flex: 1,
-                      fontSize: '1.125rem',
-                      textDecoration: todo.completed ? 'line-through' : 'none',
-                      color: todo.completed ? '#6b7280' : '#1f2937',
-                    }}
-                  >
+                  <span className={`todo-text ${todo.completed ? 'is-completed' : ''}`}>
                     {todo.text}
                   </span>
 
                   <button
                     onClick={() => handleRemoveTodo(todo._id)}
-                    style={{ flexShrink: 0, padding: '0.5rem', color: '#f87171', background: 'none', border: 'none', cursor: 'pointer' }}
+                    className="todo-delete"
                   >
                     <Trash2 size={18} />
                   </button>
@@ -175,8 +142,8 @@ function ConvexTodos() {
         </div>
 
         {/* Footer */}
-        <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
-          <p style={{ color: 'rgba(21, 128, 61, 0.8)', fontSize: '0.875rem' }}>
+        <div className="convex-footer">
+          <p>
             Built with Convex • Real-time updates • Always in sync
           </p>
         </div>

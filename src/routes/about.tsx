@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import './about.module.scss'
 
 export const Route = createFileRoute('/about')({
   component: About,
@@ -6,10 +7,10 @@ export const Route = createFileRoute('/about')({
 
 function About() {
   return (
-    <main className="page-wrap">
-      <section className="island-shell">
+    <main className="about-main page-wrap">
+      <section className="about-hero island-shell l-stack" style={{ '--space': 'var(--space-m)' } as any}>
         <p className="island-kicker">About</p>
-        <h1 className="display-title">
+        <h1 className="about-title display-title">
           A small starter with room to grow.
         </h1>
         <p>

@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useUser } from '@clerk/clerk-react'
+import './clerk.module.scss'
 
 export const Route = createFileRoute('/demo/clerk')({
   component: App,
@@ -9,12 +10,25 @@ function App() {
   const { isSignedIn, user, isLoaded } = useUser()
 
   if (!isLoaded) {
-    return <div>Loading...</div>
+    return (
+      <main className="clerk-page page-wrap l-center">
+        <p>Loading...</p>
+      </main>
+    )
   }
 
   if (!isSignedIn) {
-    return <div>Sign in to view this page</div>
+    return (
+      <main className="clerk-page page-wrap l-center">
+        <p>Sign in to view this page</p>
+      </main>
+    )
   }
 
-  return <div>Hello {user.firstName}!</div>
+  return (
+    <main className="clerk-page page-wrap l-stack l-center" style={{ '--space': 'var(--space-m)' } as any}>
+      <h1 className="clerk-title">Hello {user.firstName}!</h1>
+      <p>Welcome to the Clerk demo page.</p>
+    </main>
+  )
 }

@@ -1,0 +1,16 @@
+.about-main {
+  padding-block: var(--space-xl);
+}
+
+.about-hero {
+  padding: var(--space-xl);
+  border-radius: var(--radius-l);
+  max-width: 80ch;
+  margin-inline: auto;
+}
+
+.about-title {
+  font-size: var(--step-4);
+  line-height: 1.1;
+  color: var(--sea-ink);
+}

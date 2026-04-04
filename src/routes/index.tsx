@@ -1,25 +1,26 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
+import './index.module.scss'
 
 export const Route = createFileRoute('/')({ component: App })
 
 function App() {
   return (
-    <main className="page-wrap">
-      <section className="island-shell rise-in">
+    <main className="home-main page-wrap l-stack" style={{ '--space': 'var(--space-2xl)' } as any}>
+      <section className="hero-island island-shell rise-in l-stack" style={{ '--space': 'var(--space-m)' } as any}>
         <p className="island-kicker">TanStack Start Base Template</p>
-        <h1 className="display-title">
+        <h1 className="hero-title display-title">
           Start simple, ship quickly.
         </h1>
         <p>
           This base starter intentionally keeps things light: two routes, clean
           structure, and the essentials you need to build from scratch.
         </p>
-        <div>
-          <a
-            href="/about"
+        <div className="hero-links">
+          <Link
+            to="/about"
           >
             About This Starter
-          </a>
+          </Link>
           <a
             href="https://tanstack.com/router"
             target="_blank"
@@ -30,7 +31,7 @@ function App() {
         </div>
       </section>
 
-      <section>
+      <section className="features-grid l-grid" style={{ '--grid-min-item-size': '280px', '--grid-gap': 'var(--space-l)' } as any}>
         {[
           [
             'Type-Safe Routing',
@@ -51,8 +52,8 @@ function App() {
         ].map(([title, desc], index) => (
           <article
             key={title}
-            className="island-shell feature-card rise-in"
-            style={{ animationDelay: `${index * 90 + 80}ms` }}
+            className="feature-article island-shell feature-card rise-in l-stack"
+            style={{ animationDelay: `${index * 90 + 80}ms`, '--space': 'var(--space-xs)' } as any}
           >
             <h2>
               {title}
@@ -62,9 +63,9 @@ function App() {
         ))}
       </section>
 
-      <section className="island-shell">
+      <section className="quick-start island-shell l-stack" style={{ '--space': 'var(--space-m)' } as any}>
         <p className="island-kicker">Quick Start</p>
-        <ul>
+        <ul className="l-stack" style={{ '--space': 'var(--space-xs)' } as any}>
           <li>
             Edit <code>src/routes/index.tsx</code> to customize the home page.
           </li>

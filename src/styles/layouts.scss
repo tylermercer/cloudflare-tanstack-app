@@ -12,7 +12,7 @@
   .l-stack {
     display: flex;
     flex-direction: column;
-    gap: var(--stack-gap, var(--space-m));
+    gap: var(--space, var(--stack-gap, var(--space-m)));
   }
 
   // ─── Cluster ───────────────────────────────────────────────────────────
@@ -20,8 +20,26 @@
   .l-cluster {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--cluster-gap, var(--space-s));
+    gap: var(--space, var(--cluster-gap, var(--space-s)));
     align-items: var(--cluster-align, center);
+  }
+
+  // ─── Grid ──────────────────────────────────────────────────────────────
+  // Multi-column layout with min-max control
+  .l-grid {
+    display: grid;
+    gap: var(--grid-gap, var(--space, var(--space-m)));
+    grid-template-columns: repeat(auto-fill, minmax(min(var(--grid-min-item-size, 250px), 100%), 1fr));
+  }
+
+  // ─── Center ────────────────────────────────────────────────────────────
+  // Center content horizontally and vertically
+  .l-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   // ─── Switcher ──────────────────────────────────────────────────────────
