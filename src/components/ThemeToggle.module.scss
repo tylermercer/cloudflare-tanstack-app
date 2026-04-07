@@ -1,0 +1,16 @@
+.toggle {
+  border-radius: var(--radius-full);
+  border: 1px solid var(--chip-line);
+  background-color: var(--chip-bg);
+  padding: var(--space-3xs) var(--space-s);
+  font-size: var(--step--1);
+  font-weight: var(--font-weight-bold);
+  color: var(--sea-ink);
+  box-shadow: 0 8px 22px rgba(30, 90, 72, 0.08);
+  cursor: pointer;
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}

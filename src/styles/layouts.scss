@@ -1,0 +1,85 @@
+@layer layouts {
+  // ─── Switcher ──────────────────────────────────────────────────────────
+  .l-switcher {
+    display: flex;
+    flex-wrap: wrap;
+    --l-switcher-threshold: 50rem;
+    --l-switcher-modifier: calc(var(--l-switcher-threshold) - 100%);
+    gap: var(--l-space, var(--space-m));
+
+    > * {
+      flex-grow: 1;
+      flex-basis: calc(var(--l-switcher-modifier) * 999);
+    }
+  }
+
+  // ─── Prose ─────────────────────────────────────────────────────────────
+  .l-prose {
+    display: block;
+
+    > * {
+      margin-top: 1em;
+      margin-bottom: 0;
+    }
+
+    > :first-child {
+      margin-top: 0;
+    }
+  }
+
+  // ─── Row ───────────────────────────────────────────────────────────────
+  .l-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--l-space, var(--space-xs));
+  }
+
+  // ─── Cluster ───────────────────────────────────────────────────────────
+  .l-cluster-r,
+  .l-cluster-l {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--l-space, var(--space-xs));
+  }
+
+  .l-cluster-r { justify-content: flex-end; }
+  .l-cluster-l { justify-content: flex-start; }
+
+  // ─── Column ────────────────────────────────────────────────────────────
+  .l-column {
+    display: flex;
+    gap: var(--l-space, var(--space-xs));
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  // ─── Stack ────────────────────────────────────────────────────────────
+  .l-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: var(--l-space, var(--space-s));
+  }
+
+  // ─── Container ────────────────────────────────────────────────────────
+  .l-container {
+    width: min(1080px, calc(100% - 2rem));
+    margin-inline: auto;
+  }
+
+  // ─── Space modifiers ───────────────────────────────────────────────────
+  .l-space-none  { --l-space: 0; }
+  .l-space-3xs   { --l-space: var(--space-3xs); }
+  .l-space-2xs   { --l-space: var(--space-2xs); }
+  .l-space-xs    { --l-space: var(--space-xs); }
+  .l-space-s     { --l-space: var(--space-s); }
+  .l-space-m     { --l-space: var(--space-m); }
+  .l-space-l     { --l-space: var(--space-l); }
+  .l-space-xl    { --l-space: var(--space-xl); }
+  .l-space-3xl   { --l-space: var(--space-3xl); }
+
+  // Fluid one-up pairs
+  .l-space-s-m     { --l-space: var(--space-s-m); }
+  .l-space-m-l     { --l-space: var(--space-m-l); }
+  .l-space-l-xl    { --l-space: var(--space-l-xl); }
+}
