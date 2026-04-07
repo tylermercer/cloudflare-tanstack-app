@@ -9,12 +9,20 @@
 }
 
 .nav {
-  // page-wrap is .l-container
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
   padding-block: var(--space-s);
 
   @media (min-width: 640px) {
     padding-block: var(--space-s-m);
   }
+}
+
+.logo {
+  margin: 0;
+  flex-shrink: 0;
 }
 
 .logo_link {

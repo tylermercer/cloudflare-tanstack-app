@@ -8,7 +8,7 @@ function About() {
   return (
     <main className="l-container main">
       <section className="about_section">
-        <p className="u-slub mb-2">About</p>
+        <p className="u-slub kicker">About</p>
         <h1 className="title">A small starter with room to grow.</h1>
         <p className="description">
           TanStack Start gives you type-safe routing, server functions, and

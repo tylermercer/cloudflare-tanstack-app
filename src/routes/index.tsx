@@ -8,13 +8,13 @@ function App() {
       <section className="u-rise-in hero_section">
         <div className="hero_glow_1" />
         <div className="hero_glow_2" />
-        <p className="u-slub mb-3">TanStack Start Base Template</p>
-        <h1 className="title mb-5">Start simple, ship quickly.</h1>
-        <p className="description mb-8">
+        <p className="u-slub kicker">TanStack Start Base Template</p>
+        <h1 className="title">Start simple, ship quickly.</h1>
+        <p className="description">
           This base starter intentionally keeps things light: two routes, clean
           structure, and the essentials you need to build from scratch.
         </p>
-        <div className="l-cluster-l l-space-xs">
+        <div className="cta_group">
           <a href="/about" className="hero_cta">
             About This Starter
           </a>
@@ -60,8 +60,8 @@ function App() {
       </section>
 
       <section className="quickstart_section">
-        <p className="u-slub mb-2">Quick Start</p>
-        <ul className="l-stack l-space-2xs feature_desc">
+        <p className="u-slub quickstart_title">Quick Start</p>
+        <ul className="quickstart_list">
           <li>
             Edit <code>src/routes/index.tsx</code> to customize the home page.
           </li>

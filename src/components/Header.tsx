@@ -5,8 +5,8 @@ import ThemeToggle from './ThemeToggle'
 export default function Header() {
   return (
     <header className="header">
-      <nav className="l-container l-row items-center l-space-xs nav">
-        <h2 className="m-0 flex-shrink-0">
+      <nav className="l-container nav">
+        <h2 className="logo">
           <Link to="/" className="logo_link">
             <span className="logo_dot" />
             TanStack Start

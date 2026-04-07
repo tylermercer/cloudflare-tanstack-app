@@ -44,16 +44,29 @@
   background: radial-gradient(circle, rgba(47, 106, 74, 0.18), transparent 66%);
 }
 
+.kicker {
+  margin-bottom: var(--space-xs);
+}
+
 .title {
   max-width: 48rem;
   line-height: 1.02;
   letter-spacing: -0.025em;
   color: var(--sea-ink);
+  margin-bottom: var(--space-m);
 }
 
 .description {
   max-width: 40rem;
   color: var(--sea-ink-soft);
+  margin-bottom: var(--space-l);
+}
+
+.cta_group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  justify-content: flex-start;
 }
 
 .hero_cta {
@@ -137,4 +150,19 @@
   border: 1px solid var(--line);
   background: linear-gradient(165deg, var(--surface-strong), var(--surface));
   box-shadow: var(--shadow-island);
+}
+
+.quickstart_title {
+  margin-bottom: var(--space-2xs);
+}
+
+.quickstart_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--space-2xs);
+  list-style-type: disc;
+  padding-inline-start: var(--space-m);
+  color: var(--sea-ink-soft);
+  font-size: var(--step--1);
 }

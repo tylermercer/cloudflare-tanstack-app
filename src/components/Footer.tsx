@@ -3,7 +3,7 @@ export default function Footer() {
 
   return (
     <footer className="footer">
-      <div className="l-container l-row items-center justify-between l-space-s content">
+      <div className="l-container content">
         <p className="copyright">
           &copy; {year} Your name here. All rights reserved.
         </p>
