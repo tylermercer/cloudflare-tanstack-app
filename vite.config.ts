@@ -8,18 +8,29 @@ import viteReact from '@vitejs/plugin-react'
 import { cloudflare } from '@cloudflare/vite-plugin'
 import cssAutoImport from 'vite-plugin-css-auto-import'
 import path from 'node:path'
+import fs from 'node:fs/promises'
 
 const config = defineConfig({
   plugins: [
     cssAutoImport({
       styleExtensions: ['.module.scss'],
       matchComponentName: true,
-      shouldTransformComponent(filename, filepath) {
-        const shouldTransform = !filepath.startsWith('\x00') && filename.includes('.tsx') && !filename.startsWith('__') && (filepath.includes('/routes/') || filepath.includes('/components/'));
-        if (shouldTransform) {
-          console.log({ filename, filepath, shouldTransform });
+      async shouldTransformComponent(_filename, filepath) {
+        const cleanPath = filepath.split('?')[0];
+        if (filepath.startsWith('\x00') || !cleanPath.endsWith('.tsx')) {
+          return false;
         }
-        return Promise.resolve(shouldTransform);
+
+        const { dir, name } = path.parse(cleanPath);
+        const stylePath = path.join(dir, `${name}.module.scss`);
+
+        try {
+          await fs.access(stylePath);
+          console.log({ filepath, shouldTransform: true, stylePath });
+          return true;
+        } catch {
+          return false;
+        }
       },
       resolveStyleForComponent(_componentName, _directoryName, filePath) {
         // 1. Remove any query parameters (e.g., ?tsr-split=component)
