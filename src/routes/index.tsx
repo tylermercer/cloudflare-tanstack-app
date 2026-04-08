@@ -4,10 +4,10 @@ export const Route = createFileRoute('/')({ component: App })
 
 function App() {
   return (
-    <main className="l-container main">
-      <section className="u-rise-in hero-section">
-        <div className="hero-glow_1" />
-        <div className="hero-glow_2" />
+    <main className="main l-container">
+      <section className="hero-section u-rise-in">
+        <div className="hero-glow-1" />
+        <div className="hero-glow-2" />
         <p className="u-slub kicker">TanStack Start Base Template</p>
         <h1 className="title">Start simple, ship quickly.</h1>
         <p className="description">
