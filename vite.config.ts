@@ -26,7 +26,6 @@ const config = defineConfig({
 
         try {
           await fs.access(stylePath);
-          console.log({ filepath, shouldTransform: true, stylePath });
           return true;
         } catch {
           return false;
@@ -43,7 +42,6 @@ const config = defineConfig({
         // This ensures it stays in the "same dir" as requested.
         const stylepath = path.join(dir, `${name}.module.scss`);
 
-        console.log({stylepath, _componentName})
         return {
           isModule: true,
           filePath: stylepath
