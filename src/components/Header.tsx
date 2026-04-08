@@ -1,26 +1,26 @@
 import { Link } from '@tanstack/react-router'
 import ClerkHeader from '../integrations/clerk/header-user.tsx'
 import ThemeToggle from './ThemeToggle'
-import './Header.module.scss'
+import styles from './Header.module.scss'
 
 export default function Header() {
   return (
-    <header className="header">
-      <nav className="l-container nav">
-        <h2 className="logo">
-          <Link to="/" className="logo-link">
-            <span className="logo-dot" />
+    <header className={styles.header}>
+      <nav className={`${styles.nav} l-container`}>
+        <h2 className={styles.logo}>
+          <Link to="/" className={styles.logoLink}>
+            <span className={styles.logoDot} />
             TanStack Start
           </Link>
         </h2>
 
-        <div className="actions">
-          <div className="social-links">
+        <div className={styles.actions}>
+          <div className={styles.socialLinks}>
             <a
               href="https://x.com/tan_stack"
               target="_blank"
               rel="noreferrer"
-              className="social-link"
+              className={styles.socialLink}
             >
               <span className="u-sr-only">Follow TanStack on X</span>
               <svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24">
@@ -34,7 +34,7 @@ export default function Header() {
               href="https://github.com/TanStack"
               target="_blank"
               rel="noreferrer"
-              className="social-link"
+              className={styles.socialLink}
             >
               <span className="u-sr-only">Go to TanStack GitHub</span>
               <svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24">
@@ -50,36 +50,38 @@ export default function Header() {
           <ThemeToggle />
         </div>
 
-        <div className="nav-links">
+        <div className={styles.navLinks}>
           <Link
             to="/"
-            className="nav-link"
-            activeProps={{ className: 'nav-link is-active' }}
+            className={styles.navLink}
+            activeProps={{ className: `${styles.navLink} ${styles.isActive}` }}
           >
             Home
           </Link>
           <Link
             to="/about"
-            className="nav-link"
-            activeProps={{ className: 'nav-link is-active' }}
+            className={styles.navLink}
+            activeProps={{ className: `${styles.navLink} ${styles.isActive}` }}
           >
             About
           </Link>
           <a
             href="https://tanstack.com/start/latest/docs/framework/react/overview"
-            className="nav-link"
+            className={styles.navLink}
             target="_blank"
             rel="noreferrer"
           >
             Docs
           </a>
-          <details className="dropdown">
-            <summary className="nav-link dropdown-summary">Demos</summary>
-            <div className="dropdown-content">
-              <a href="/demo/clerk" className="dropdown-link">
+          <details className={styles.dropdown}>
+            <summary className={`${styles.navLink} ${styles.dropdownSummary}`}>
+              Demos
+            </summary>
+            <div className={styles.dropdownContent}>
+              <a href="/demo/clerk" className={styles.dropdownLink}>
                 Clerk
               </a>
-              <a href="/demo/convex" className="dropdown-link">
+              <a href="/demo/convex" className={styles.dropdownLink}>
                 Convex
               </a>
             </div>

@@ -1,35 +1,36 @@
 import { createFileRoute } from '@tanstack/react-router'
+import styles from './index.module.scss'
 
 export const Route = createFileRoute('/')({ component: App })
 
 function App() {
   return (
-    <main className="l-container main">
-      <section className="u-rise-in hero-section">
-        <div className="hero-glow_1" />
-        <div className="hero-glow_2" />
+    <main className={`${styles.main} l-container`}>
+      <section className={`${styles.heroSection} u-rise-in`}>
+        <div className={styles.heroGlow1} />
+        <div className={styles.heroGlow2} />
         <p className="u-slub kicker">TanStack Start Base Template</p>
-        <h1 className="title">Start simple, ship quickly.</h1>
-        <p className="description">
+        <h1 className={styles.title}>Start simple, ship quickly.</h1>
+        <p className={styles.description}>
           This base starter intentionally keeps things light: two routes, clean
           structure, and the essentials you need to build from scratch.
         </p>
-        <div className="cta-group">
-          <a href="/about" className="hero-cta">
+        <div className={styles.ctaGroup}>
+          <a href="/about" className={styles.heroCta}>
             About This Starter
           </a>
           <a
             href="https://tanstack.com/router"
             target="_blank"
             rel="noopener noreferrer"
-            className="hero-secondary-cta"
+            className={styles.heroSecondaryCta}
           >
             Router Guide
           </a>
         </div>
       </section>
 
-      <section className="features-grid">
+      <section className={styles.featuresGrid}>
         {[
           [
             'Type-Safe Routing',
@@ -50,18 +51,18 @@ function App() {
         ].map(([title, desc], index) => (
           <article
             key={title}
-            className="u-rise-in feature-card"
+            className={`${styles.featureCard} u-rise-in`}
             style={{ animationDelay: `${index * 90 + 80}ms` }}
           >
-            <h2 className="feature-title">{title}</h2>
-            <p className="feature-desc">{desc}</p>
+            <h2 className={styles.featureTitle}>{title}</h2>
+            <p className={styles.featureDesc}>{desc}</p>
           </article>
         ))}
       </section>
 
-      <section className="quickstart-section">
+      <section className={styles.quickstartSection}>
         <p className="u-slub quickstart-title">Quick Start</p>
-        <ul className="quickstart-list">
+        <ul className={styles.quickstartList}>
           <li>
             Edit <code>src/routes/index.tsx</code> to customize the home page.
           </li>

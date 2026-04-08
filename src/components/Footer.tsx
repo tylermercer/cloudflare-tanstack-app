@@ -1,20 +1,22 @@
+import styles from './Footer.module.scss'
+
 export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="footer">
-      <div className="l-container content">
-        <p className="copyright">
+    <footer className={styles.footer}>
+      <div className={`${styles.content} l-container`}>
+        <p className={styles.copyright}>
           &copy; {year} Your name here. All rights reserved.
         </p>
         <p className="u-slub">Built with TanStack Start</p>
       </div>
-      <div className="social-links">
+      <div className={styles.socialLinks}>
         <a
           href="https://x.com/tan_stack"
           target="_blank"
           rel="noreferrer"
-          className="social-link"
+          className={styles.socialLink}
         >
           <span className="u-sr-only">Follow TanStack on X</span>
           <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32">
@@ -28,7 +30,7 @@ export default function Footer() {
           href="https://github.com/TanStack"
           target="_blank"
           rel="noreferrer"
-          className="social-link"
+          className={styles.socialLink}
         >
           <span className="u-sr-only">Go to TanStack GitHub</span>
           <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32">
